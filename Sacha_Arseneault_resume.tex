@@ -1,0 +1,236 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{anyfontsize}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{iftex}
+\usepackage{relsize}
+\usepackage[fontsize=10.5pt]{fontsize}
+
+\ifPDFTeX
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
+
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\labelitemiii}{$\circ$}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.65in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.4in}
+\addtolength{\topmargin}{-.65in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeTopBulletItem}[1]{
+  \item\small{
+    \vspace{3pt}  % Adjust this value to control the space before the bullet
+    {#1 \vspace{-3pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-8pt} % adjust to change space between top bullet and sub bullets
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.3in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\newcommand{\resumeSubItemListStart}{\begin{itemize}[itemsep=5pt, topsep=3pt, parsep=0pt, left=1em, leftmargin=0.15in]}
+\newcommand{\resumeSubItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+
+
+\begin{center}
+    \textbf{\Huge \scshape Sacha Arseneault} \\ 
+    \vspace{1mm}
+    \small \href{mailto:sacha.arseneault@gmail.com}{sacha.arseneault@gmail.com} $|$
+    \href{https://linkedin.com/in/sacha-ars}{linkedin.com/in/sacha-ars} $|$
+    \href{https://github.com/xsachax}{github.com/xsachax}
+    $|$
+    \href{https://sachaa.dev}{sachaa.dev}
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {\href{https://uottawa.ca}{University of Ottawa}}{Ottawa, ON}
+      {BASc in Software Engineering, Co-op}{GPA: 3.9/4.0 $|$ Expected: Dec 2026}
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {\href{https://microsoft.ai/}{Microsoft AI}}{Mountain View, CA}
+      {Applied AI/ML Intern — Copilot}{June 2026 - Aug 2026}
+        \resumeItemListStart
+            \resumeTopBulletItem{Supporting Copilot's agent stack serving \textbf{+100M monthly users}, across harness engineering and response quality.}
+             \resumeSubItemListStart
+        \resumeItem{Architected a new evidence bundling pipeline to reinforce live evaluations against long-running agentic coding sessions, powering runtime-orchestration flywheels and \textbf{reducing eval runtimes by over 40\%}.}
+        \resumeItem{Improved first-turn \textbf{KV cache hit rate} on Copilot's GPT-based inferencing from 0.9\% to 90\% by introducing cross-conversational prefix routing in GPU load balancing.}
+        \resumeItem{Demo'd a proposal on how autonomous agents should handle self-directed continuity to VP-level suite.}
+            \resumeSubItemListEnd
+            \resumeItemListEnd
+    
+    \vspace{1mm}
+
+    \resumeSubheading
+      {\href{https://tesla.com}{Tesla}}{Palo Alto, CA}
+      {Software Engineer Intern — Robotaxi}{May 2025 - Aug 2025}
+            \resumeItemListStart
+            \resumeTopBulletItem{Developed \textbf{infrastructure} and executed \textbf{live validation} supporting Tesla’s official \textbf{robotaxi} launch. (June '25)}
+                \resumeSubItemListStart
+                        \resumeItem{Built an integration test suite validating telemetry received from 6 different pipelines during \textbf{real robotaxi rides}, reducing full-system verification from \underline{15 to 2 minutes}. (Go, Docker, Bash, Kafka)}
+                        \resumeItem{Conducted \textbf{live QA across 200+ physical  rides}, identifying dispatch and rider experience issues and coordinating resolution with cross-functional teams ahead of Early Access.}
+                        \resumeItem{Added pre-merge detection for versioning-related  schema mismatches (Redis), reducing deployment regressions to zero.}
+                        \resumeItem{Configured post-merge \textbf{canary workflows} executing end-to-end validation \textbf{across the complete rider journey}—from ride hailing through passenger drop-off—by orchestrating mobile emulators and simulated car fleets.}
+                        \resumeItem{Implemented \textbf{fault-tolerant parsing} across all telemetry pipelines, recovering \underline{100\% of valid fields} in bad payloads.}
+                \resumeSubItemListEnd
+            \resumeItemListEnd
+    
+    \vspace{1mm}
+  
+    \resumeSubheading
+      {\href{https://shopify.com}{Shopify}}{Ottawa, ON}
+      {Software Engineer Intern — Stores}{Jan 2025 - Apr 2025}
+            \resumeItemListStart
+                \resumeTopBulletItem{Increased \textbf{robustness} and \textbf{resiliency} in Shopify’s store-creation process and developer platform.}
+                \resumeSubItemListStart
+                    \resumeItem{Resolved a 1/1000 \textbf{race condition} between asynchronous Kafka events and GraphQL mutations affecting over \underline{2 million store creations annually}, preventing duplicate records across 3 MySQL databases.}
+                    \resumeItem{Implemented a \textbf{self-healing timeout job} for expired store-creation requests, achieving \underline{100\% recovery} and eliminating manual intervention during platform outages. (Ruby, Rails)}
+                \resumeSubItemListEnd
+            \resumeItemListEnd
+
+    
+      
+    \resumeSubHeadingListEnd
+\section{Leadership}
+\resumeSubHeadingListStart
+      \resumeProjectHeading
+      {\href{https://ieeeuottawa.ca/}{\textbf{IEEE uOttawa}} - \textit{Webmaster}}{Sep 2022 – Apr 2026}
+      \resumeItemListStart
+        \resumeItem{Led a team of 10 developers in building 4 \textbf{open-source web-apps} driving \underline{5,000+} visits and \underline{25,000+} impressions per month, tracked by the successful review and merge of \underline{75+} pull requests.}\resumeItem{Hosted 2 workshops \textbf{(Git/React)} and 3  review sessions \textbf{(Data Structures and Algorithms)} with \underline{50+} attendees each.}\resumeItemListEnd
+
+ 
+    \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+
+    \resumeSubHeadingListStart
+
+    \resumeProjectHeading
+          {\textbf{\href{https://github.com/bingosuite/bingo}{\underline{Concurrency Debugger for Go}}} $|$ \emph{Golang, Websocket, GinkGo}}
+          {2026}
+          \resumeItemListStart
+            \resumeItem{A multi-platform concurrency debugger, enabling visualization of goroutines, channels, and synchronization.}
+            \resumeItem{Co-designed and built the \textbf{full system architecture in Go}, including the core debugger engine, a session-based DAP server, and an interactive client for session control, execution, and breakpoint management.}
+            \resumeItem{Developed \textbf{low-level debugging backends} for Linux (amd64) and macOS Silicon (darwin, arm64), leveraging OS-specific process control and metadata to \textbf{facilitate runtime inspection}.}
+    \resumeItemListEnd
+
+      \resumeProjectHeading
+          {\textbf{\href{https://devpost.com/software/ecorewards-t0qw26}{\underline{Eco Rewards App}}} $|$ \emph{Remix, TypeScript, Express.js, PostgreSQL, ShadCn, Auth0}}
+          {2024}
+          \resumeItemListStart
+            \resumeItem{A full-stack points-tracking app rewarding users for sustainable day-to-day actions.}
+            \resumeItem{\textbf{Won 1st Place} out of \underline{842} participants in the top sponsor track at \textbf{\href{https://hackthenorth.com/}{Hack the North}}, Canada’s largest hackathon.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+    
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Go, Python, TypeScript, Java, SQL, Ruby} \\
+     \textbf{Frameworks/Libraries}{: Express, Next, React, Redux, PostgreSQL, Rails, Supabase, FastAPI, Scikit-learn, Pandas, Torch} \\
+     \textbf{Tools}{: Git, Docker, Linux, Bash, Prometheus, Grafana, OpenTelemetry, Kafka, Redis, GraphQL, gRPC, Protobuf} }}
+ \end{itemize}
+
+%
+
+\end{document}
