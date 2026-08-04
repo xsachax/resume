@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - Sacha_Arseneault_resume.tex
-      - .github/workflows/publish-resume.yml
   workflow_dispatch:
 
 permissions:
