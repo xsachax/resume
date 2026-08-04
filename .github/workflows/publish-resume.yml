@@ -1,0 +1,70 @@
+name: Publish resume to Google Drive
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - Sacha_Arseneault_resume.tex
+      - .github/workflows/publish-resume.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: publish-resume
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install Tectonic
+        env:
+          TECTONIC_ARCHIVE: tectonic-0.17.0-x86_64-unknown-linux-gnu.tar.gz
+          TECTONIC_SHA256: 1a715688baf591e650c8aeb160ae934e181685eecbb38b317de30b269ac5d606
+        run: |
+          archive="${RUNNER_TEMP}/${TECTONIC_ARCHIVE}"
+          curl --fail --location --silent --show-error \
+            "https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%400.17.0/${TECTONIC_ARCHIVE}" \
+            --output "${archive}"
+          echo "${TECTONIC_SHA256}  ${archive}" | sha256sum --check -
+          mkdir -p "${RUNNER_TEMP}/bin"
+          tar --extract --gzip --file "${archive}" --directory "${RUNNER_TEMP}/bin"
+          echo "${RUNNER_TEMP}/bin" >> "${GITHUB_PATH}"
+
+      - name: Compile resume
+        run: tectonic --keep-logs Sacha_Arseneault_resume.tex
+
+      - name: Authenticate to Google Cloud
+        id: google-auth
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/drive
+          create_credentials_file: false
+
+      - name: Update Google Drive file
+        env:
+          ACCESS_TOKEN: ${{ steps.google-auth.outputs.access_token }}
+          DRIVE_FILE_ID: ${{ vars.GOOGLE_DRIVE_FILE_ID }}
+        run: |
+          response="$(
+            curl --fail-with-body --silent --show-error \
+              --request PATCH \
+              --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Content-Type: application/pdf" \
+              --data-binary @Sacha_Arseneault_resume.pdf \
+              "https://www.googleapis.com/upload/drive/v3/files/${DRIVE_FILE_ID}?uploadType=media&fields=id%2Cname%2CmodifiedTime"
+          )"
+          jq --exit-status --arg id "${DRIVE_FILE_ID}" '.id == $id' <<< "${response}" > /dev/null
+          echo "Updated $(jq --raw-output '.name') at $(jq --raw-output '.modifiedTime')."
