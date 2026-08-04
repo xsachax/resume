@@ -1,6 +1,5 @@
 \documentclass[letterpaper,11pt]{article}
 
-\usepackage{anyfontsize}
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
@@ -83,7 +82,7 @@
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-8pt} % adjust to change space between top bullet and sub bullets
+    \end{tabular*}\vspace{-8pt} % Adjust spacing before the first bullet
 }
 
 \newcommand{\resumeSubSubheading}[2]{
@@ -108,9 +107,6 @@
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.3in]}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-
-\newcommand{\resumeSubItemListStart}{\begin{itemize}[itemsep=5pt, topsep=3pt, parsep=0pt, left=1em, leftmargin=0.15in]}
-\newcommand{\resumeSubItemListEnd}{\end{itemize}\vspace{-5pt}}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -147,54 +143,55 @@
 
     \resumeSubheading
       {\href{https://microsoft.ai/}{Microsoft AI}}{Mountain View, CA}
-      {Applied AI/ML Intern — Copilot}{June 2026 - Aug 2026}
-        \resumeItemListStart
-            \resumeTopBulletItem{Supporting Copilot's agent stack serving \textbf{+100M monthly users}, across harness engineering and response quality.}
-             \resumeSubItemListStart
-        \resumeItem{Architected a new evidence bundling pipeline to reinforce live evaluations against long-running agentic coding sessions, powering runtime-orchestration flywheels and \textbf{reducing eval runtimes by over 40\%}.}
-        \resumeItem{Improved first-turn \textbf{KV cache hit rate} on Copilot's GPT-based inferencing from 0.9\% to 90\% by introducing cross-conversational prefix routing in GPU load balancing.}
-        \resumeItem{Demo'd a proposal on how autonomous agents should handle self-directed continuity to VP-level suite.}
-            \resumeSubItemListEnd
-            \resumeItemListEnd
+      {Applied AI/ML Intern — \href{https://copilot.microsoft.com/}{Copilot}}{June 2026 - Aug 2026}
+      \resumeItemListStart
+      \resumeTopBulletItem{Modernized Copilot's agent stack serving \textbf{100M+ monthly users}—across harness engineering, response quality, and inference—driving its transition toward longer-running agentic workflows.}
+        \resumeItem{Increased first-turn \textbf{KV cache hit rates} on low-traffic GPT models from \underline{7\% to 90\%} by introducing dynamic cross-conversation GPU routing, saving up to \underline{\$1.4M annually} in inference costs.}
+        \resumeItem{Architected an end-to-end evaluation platform for coding-agent fleets—combining evidence bundling, a 7-axis taxonomy, and LLM judging—profiling \underline{1,000+ PRs/week} across Microsoft products serving \textbf{500M+ monthly users}.}
+        \resumeItem{Influenced the ``autopilot'' feature roadmap by proposing \textit{self-directed continuity} to VP leadership, enabling always-running agents to pursue missions autonomously with \textbf{zero user intervention.}}
+      \resumeItemListEnd
     
     \vspace{1mm}
 
     \resumeSubheading
       {\href{https://tesla.com}{Tesla}}{Palo Alto, CA}
-      {Software Engineer Intern — Robotaxi}{May 2025 - Aug 2025}
-            \resumeItemListStart
-            \resumeTopBulletItem{Developed \textbf{infrastructure} and executed \textbf{live validation} supporting Tesla’s official \textbf{robotaxi} launch. (June '25)}
-                \resumeSubItemListStart
-                        \resumeItem{Built an integration test suite validating telemetry received from 6 different pipelines during \textbf{real robotaxi rides}, reducing full-system verification from \underline{15 to 2 minutes}. (Go, Docker, Bash, Kafka)}
-                        \resumeItem{Conducted \textbf{live QA across 200+ physical  rides}, identifying dispatch and rider experience issues and coordinating resolution with cross-functional teams ahead of Early Access.}
-                        \resumeItem{Added pre-merge detection for versioning-related  schema mismatches (Redis), reducing deployment regressions to zero.}
-                        \resumeItem{Configured post-merge \textbf{canary workflows} executing end-to-end validation \textbf{across the complete rider journey}—from ride hailing through passenger drop-off—by orchestrating mobile emulators and simulated car fleets.}
-                        \resumeItem{Implemented \textbf{fault-tolerant parsing} across all telemetry pipelines, recovering \underline{100\% of valid fields} in bad payloads.}
-                \resumeSubItemListEnd
-            \resumeItemListEnd
+      {Software Engineer Intern — \href{https://www.tesla.com/robotaxi}{Robotaxi}}{May 2025 - Aug 2025}
+      \resumeItemListStart
+        \resumeTopBulletItem{Established \textbf{early reliability guardrails} for Tesla's robotaxi platform—across automation testing, observability, and rider feedback pipelines—maximizing readiness for its official release in June 2025.}
+        \resumeItem{Configured post-merge canaries validating \textbf{the complete rider journey}—from ride hailing to passenger drop-off—by using mobile emulators and simulated car fleets, flagging deployment issues \textbf{immediately} without impacting live rides.}        \resumeItem{Built an integration test suite validating telemetry emitted from 6 different sources during \textbf{real robotaxi rides}, reducing full-system verification from \underline{15 to 2 minutes} and saving 150 hrs/year of manual testing work \underline{per engineer.} (Go, Docker, Kafka)}
+        \resumeItem{Implemented fault-tolerant telemetry parsing that recovers \underline{100\% of valid fields} in legacy payloads, preserving accountability and observability for robotaxis running on older Model Y firmware.}
+        \resumeItem{Conducted \textbf{live QA across 200+ physical rides}, identifying infotainement and rider experience issues and coordinating resolution with cross-functional teams ahead of Early Access.}
+      \resumeItemListEnd
+
     
     \vspace{1mm}
   
     \resumeSubheading
       {\href{https://shopify.com}{Shopify}}{Ottawa, ON}
       {Software Engineer Intern — Stores}{Jan 2025 - Apr 2025}
-            \resumeItemListStart
-                \resumeTopBulletItem{Increased \textbf{robustness} and \textbf{resiliency} in Shopify’s store-creation process and developer platform.}
-                \resumeSubItemListStart
-                    \resumeItem{Resolved a 1/1000 \textbf{race condition} between asynchronous Kafka events and GraphQL mutations affecting over \underline{2 million store creations annually}, preventing duplicate records across 3 MySQL databases.}
-                    \resumeItem{Implemented a \textbf{self-healing timeout job} for expired store-creation requests, achieving \underline{100\% recovery} and eliminating manual intervention during platform outages. (Ruby, Rails)}
-                \resumeSubItemListEnd
-            \resumeItemListEnd
+      \resumeItemListStart
+        \resumeTopBulletItem{Strengthened Shopify's store-creation pipeline handling \textbf{2M+ annual store creations}—with data consistency safeguards and automated recovery—preventing failed or inconsistent creations from disrupting merchant launches.}
+      \resumeItem{Protected \underline{20,000+ new stores annually} from customer-facing data inconsistencies by resolving a \textbf{1-in-100 race condition} that created corrupted database records during merchant onboarding.}
+        \resumeItem{Eliminated the need for on-call engineers to remediate backend store-creation failures by \textbf{automating recovery across all failure states}—including timeouts and platform outages—resolving \underline{100\% of stuck requests.} (Ruby, Rails, GraphQL, MySQL)}
+    \resumeItemListEnd
 
-    
-      
+        \vspace{2mm}
+    \resumeProjectHeading
+      {\textbf{\href{https://www.motorolasolutions.com}{Motorola}} $|$ \emph{Software Engineer Intern — Emergency Call Handling}}
+      {\small Gatineau, QC $|$ Sep 2024 - Dec 2024}
+
+    \resumeProjectHeading
+      {\textbf{\href{https://www.ciena.com}{Ciena}} $|$ \emph{Software Engineer Intern — Developer Tools \& Experience}}
+      {\small Ottawa, ON $|$ Jan 2024 - Apr 2024}
+
     \resumeSubHeadingListEnd
 \section{Leadership}
 \resumeSubHeadingListStart
       \resumeProjectHeading
-      {\href{https://ieeeuottawa.ca/}{\textbf{IEEE uOttawa}} - \textit{Webmaster}}{Sep 2022 – Apr 2026}
+      {\href{https://ieeeuottawa.ca/}{\textbf{IEEE uOttawa}} - \textit{Webmaster}}{\small 2022 - 2026}
       \resumeItemListStart
-        \resumeItem{Led a team of 10 developers in building 4 \textbf{open-source web-apps} driving \underline{5,000+} visits and \underline{25,000+} impressions per month, tracked by the successful review and merge of \underline{75+} pull requests.}\resumeItem{Hosted 2 workshops \textbf{(Git/React)} and 3  review sessions \textbf{(Data Structures and Algorithms)} with \underline{50+} attendees each.}\resumeItemListEnd
+        \resumeItem{Led a team of 10 developers in building 4 open-source web-apps driving \underline{5,000+} visits and \underline{40,000+} impressions per month, serving a community of over \textbf{30,000 engineering students} across Eastern Canada.}
+        \resumeItem{Hosted 2 workshops (Git/React) and 3 review sessions (Data Structures and Algorithms) with \underline{75+ attendees each.}}\resumeItemListEnd
 
  
     \resumeSubHeadingListEnd
@@ -205,20 +202,18 @@
     \resumeSubHeadingListStart
 
     \resumeProjectHeading
-          {\textbf{\href{https://github.com/bingosuite/bingo}{\underline{Concurrency Debugger for Go}}} $|$ \emph{Golang, Websocket, GinkGo}}
-          {2026}
+          {\textbf{\href{https://github.com/bingosuite/bingo}{Concurrency Debugger for Go}} $|$ \emph{Golang, Websocket, GinkGo}}
+          {\small 2026}
           \resumeItemListStart
-            \resumeItem{A multi-platform concurrency debugger, enabling visualization of goroutines, channels, and synchronization.}
-            \resumeItem{Co-designed and built the \textbf{full system architecture in Go}, including the core debugger engine, a session-based DAP server, and an interactive client for session control, execution, and breakpoint management.}
-            \resumeItem{Developed \textbf{low-level debugging backends} for Linux (amd64) and macOS Silicon (darwin, arm64), leveraging OS-specific process control and metadata to \textbf{facilitate runtime inspection}.}
+            \resumeItem{A cross-platform Go debugger that visualizes goroutines, channels, and synchronization through low-level Linux/macOS backends, exposing execution control and runtime inspection to IDEs and coding agents via DAP.}
     \resumeItemListEnd
 
       \resumeProjectHeading
-          {\textbf{\href{https://devpost.com/software/ecorewards-t0qw26}{\underline{Eco Rewards App}}} $|$ \emph{Remix, TypeScript, Express.js, PostgreSQL, ShadCn, Auth0}}
-          {2024}
+          {\textbf{\href{https://devpost.com/software/ecorewards-t0qw26}{Eco Rewards App}} $|$ \emph{Remix, TypeScript, Express.js, PostgreSQL, ShadCn, Auth0}}
+          {\small Waterloo, ON $|$ 2024}
           \resumeItemListStart
-            \resumeItem{A full-stack points-tracking app rewarding users for sustainable day-to-day actions.}
-            \resumeItem{\textbf{Won 1st Place} out of \underline{842} participants in the top sponsor track at \textbf{\href{https://hackthenorth.com/}{Hack the North}}, Canada’s largest hackathon.}
+            \resumeItem{A full-stack points-tracking app rewarding users for sustainable day-to-day actions, with AI receipt parsing.}
+            \resumeItem{\textbf{Won 1st Place} out of \underline{842} participants in a top sponsor track at \textbf{\href{https://hackthenorth.com/}{Hack the North}}, Canada’s largest hackathon.}
           \resumeItemListEnd
     \resumeSubHeadingListEnd
     

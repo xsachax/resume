@@ -16,7 +16,7 @@
         "--synctex",
         "--keep-logs",
         "--keep-intermediates",
-        "%DOC%"
+        "%DOC_EXT%"
       ]
     }
   ]
