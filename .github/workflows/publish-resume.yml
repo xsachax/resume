@@ -64,7 +64,11 @@ jobs:
               --header "Authorization: Bearer ${ACCESS_TOKEN}" \
               --header "Content-Type: application/pdf" \
               --data-binary @Sacha_Arseneault_resume.pdf \
-              "https://www.googleapis.com/upload/drive/v3/files/${DRIVE_FILE_ID}?uploadType=media&fields=id%2Cname%2CmodifiedTime"
+              "https://www.googleapis.com/upload/drive/v3/files/${DRIVE_FILE_ID}?uploadType=media&fields=id%2Cname%2Cmd5Checksum%2CmodifiedTime"
           )"
-          jq --exit-status --arg id "${DRIVE_FILE_ID}" '.id == $id' <<< "${response}" > /dev/null
+          local_md5="$(md5sum Sacha_Arseneault_resume.pdf | cut --delimiter=' ' --fields=1)"
+          jq --exit-status \
+            --arg id "${DRIVE_FILE_ID}" \
+            --arg md5 "${local_md5}" \
+            '.id == $id and .md5Checksum == $md5' <<< "${response}" > /dev/null
           echo "Updated $(jq --raw-output '.name') at $(jq --raw-output '.modifiedTime')."
