@@ -23,6 +23,14 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      - name: Cache Tectonic resources
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/Tectonic
+          key: tectonic-${{ runner.os }}-0.17.0-${{ hashFiles('Sacha_Arseneault_resume.tex') }}
+          restore-keys: |
+            tectonic-${{ runner.os }}-0.17.0-
+
       - name: Install Tectonic
         env:
           TECTONIC_ARCHIVE: tectonic-0.17.0-x86_64-unknown-linux-gnu.tar.gz
@@ -38,7 +46,21 @@ jobs:
           echo "${RUNNER_TEMP}/bin" >> "${GITHUB_PATH}"
 
       - name: Compile resume
-        run: tectonic --keep-logs Sacha_Arseneault_resume.tex
+        run: |
+          for attempt in 1 2 3 4; do
+            if tectonic --keep-logs Sacha_Arseneault_resume.tex; then
+              exit 0
+            fi
+
+            if [[ "${attempt}" -eq 4 ]]; then
+              echo "::error::Tectonic failed after ${attempt} attempts."
+              exit 1
+            fi
+
+            delay=$((attempt * 30))
+            echo "::warning::Tectonic download failed; retrying in ${delay}s."
+            sleep "${delay}"
+          done
 
       - name: Authenticate to Google Cloud
         id: google-auth
